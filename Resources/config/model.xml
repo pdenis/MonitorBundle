@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="snide_monitor.model.application.class">Snide\Monitoring\Model\Application</parameter>
+        <parameter key="snide_monitor.model.test.class">Snide\Monitoring\Model\Test</parameter>
+    </parameters>
+    <services>
+        <service id="snide_monitor.model.application" class="%snide_monitor.model.application.class%"/>
+        <service id="snide_monitor.model.test" class="%snide_monitor.model.test.class%" />
+    </services>
+</container>

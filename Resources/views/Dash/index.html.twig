@@ -1,0 +1,48 @@
+{% extends 'SnideMonitorBundle::base.html.twig' %}
+
+{% block main %}
+    {% if tests %}
+
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+                <th>Critical tests</th>
+                <th>Failed tests</th>
+                <th>Success tests</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{ criticalFailedTests|length }}</th>
+                    <th>{{ failedTests|length }}</th>
+                    <th>{{ successTests|length }}</th>
+                </tr>
+            </tbody>    
+        </table>
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+                <th>Test</th>
+                <th>Status</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for test in tests %}
+                    <tr>
+                        <th>{{ test.identifier }}</th>
+                        <th>Status</th>
+                        <th>
+                            {% if test.exception %}
+                                {{ test.exception.message }}
+                            {% else %}
+                                 -
+                            {% endif %}
+                        </th>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

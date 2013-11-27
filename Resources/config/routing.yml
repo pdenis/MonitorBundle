@@ -1,0 +1,31 @@
+snide_monitor_dashboard:
+    pattern:   /dashboard
+    defaults:  { _controller: SnideMonitorBundle:Dash:index }
+
+snide_monitor_application:
+    pattern:   /applications
+    defaults:  { _controller: SnideMonitorBundle:Application:index }
+
+snide_monitor_application_new:
+    pattern:   /application/new
+    defaults:  { _controller: SnideMonitorBundle:Application:new }
+
+snide_monitor_application_create:
+    pattern:   /application/create
+    defaults:  { _controller: SnideMonitorBundle:Application:create }
+    requirements:
+        _method:  POST
+
+snide_monitor_application_edit:
+    pattern:   /application/edit/{id}
+    defaults:  { _controller: SnideMonitorBundle:Application:edit }
+
+snide_monitor_application_update:
+    pattern:   /application/update/{id}
+    defaults:  { _controller: SnideMonitorBundle:Application:update }
+    requirements:
+        _method:  POST
+
+snide_monitor_application_delete:
+    pattern:   /application/delete/{id}
+    defaults:  { _controller: SnideMonitorBundle:Application:delete }

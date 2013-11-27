@@ -1,0 +1,33 @@
+{% extends 'SnideMonitorBundle::base.html.twig' %}
+
+{% block main %}
+        <h2>Please, choose a Redis Instance</h2>
+
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>State</th>
+                <th>Message</th>
+                <th>Action(s)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for application in applications %}
+                <tr>
+                    <td>{{ application.name }}</td>
+                    <td>{{ application.url }}</td>
+                    <td>
+
+                    </td>
+                    <td></td>
+                    <td>
+                        <a href="{{ path('snide_monitor_application_edit', {'id': application.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <p>To add an application, <a href="{{ path('snide_monitor_application_new') }}">click here</a></p>
+{% endblock %}

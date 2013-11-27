@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/bundles/snidemonitor/css/bootstrap.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('/bundles/snidemonitor/css/bootstrap-responsive.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/bundles/snidemonitor/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="span12">
+
+            {% include 'RingoPhpRedmonBundle:Main:message.html.twig' %}
+
+
+            {% block main %}
+
+            {% endblock%}
+        </div>
+    </div>
+</div>
+{% block javascript %}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{ asset('/bundles/snidemonitor/js/bootstrap.min.js ') }}"></script>
+{% endblock %}
+</body>
+</html>

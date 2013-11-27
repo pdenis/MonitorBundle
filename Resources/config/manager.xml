@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="snide_monitor.instance_manager.class">Snide\Monitoring\Manager\ApplicationManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="snide_monitor.application_manager" class="%snide_monitor.instance_manager.class%" public="true">
+            <argument type="service" id="snide_monitor.application_repository" />
+            <argument>%snide_monitor.model.application.class%</argument>
+        </service>
+    </services>
+</container>
