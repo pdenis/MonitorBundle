@@ -5,13 +5,17 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="snide_monitor.instance_manager.class">Snide\Monitoring\Manager\ApplicationManager</parameter>
+        <parameter key="snide_monitor.application_manager.class">Snide\Monitoring\Manager\ApplicationManager</parameter>
+        <parameter key="snide_monitor.test_manager.class">Snide\Monitoring\Manager\TestManager</parameter>
     </parameters>
 
     <services>
-        <service id="snide_monitor.application_manager" class="%snide_monitor.instance_manager.class%" public="true">
+        <service id="snide_monitor.application_manager" class="%snide_monitor.application_manager.class%" public="true">
             <argument type="service" id="snide_monitor.application_repository" />
             <argument>%snide_monitor.model.application.class%</argument>
+        </service>
+        <service id="snide_monitor.test_manager" class="%snide_monitor.test_manager.class%" public="true">
+            <argument type="service" id="snide_monitor.test_executor" />
         </service>
     </services>
 </container>

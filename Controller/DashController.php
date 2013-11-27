@@ -2,7 +2,7 @@
 
 namespace Snide\Bundle\MonitorBundle\Controller;
 
-use Itkg\Monitoring;
+use Snide\Monitoring;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
@@ -15,7 +15,7 @@ class DashController extends Controller
 
     public function indexAction()
     {
-        $manager = new Monitoring\Test\Manager(new Monitoring\Test\Executor());
+        $manager = $this->getManager();
         $manager->addTest(new Monitoring\Test\Environment('test', 'test'));
         $manager->addTest(new Monitoring\Test\Redis('Redis localhost instance', 'localhost', 6379));
 
@@ -40,5 +40,15 @@ class DashController extends Controller
     protected function getTemplatePath()
     {
         return 'SnideMonitorBundle:Dash:';
+    }
+
+    /**
+     * Get test manager
+     *
+     * @return TestManager
+     */
+    public function getManager()
+    {
+        return $this->get('snide_monitor.test_manager');
     }
 }

@@ -29,7 +29,9 @@ class SnideMonitorExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('model.xml');
         $loader->load('form.xml');
+        $loader->load('executor.xml');
         $loader->load('manager.xml');
+
 
         if(isset($config['repository']['type'])) {
             $this->loadRepository($loader, $container, $config['repository']);
