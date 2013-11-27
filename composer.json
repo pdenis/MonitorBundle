@@ -1,0 +1,21 @@
+{
+    "name":         "pdenis/monitor-bundle",
+    "type":         "symfony-bundle",
+    "description":  "Service Monitoring bundle",
+    "keywords":     ["bundle", "symfony", "monitoring"],
+    "homepage":     "http://github.com/ringoteam/PhpRedmonBundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Pascal Denis",
+            "email":    "pascal.denis.75@gmail.com"
+        }
+    ],
+    "require":  "snide/monitoring",
+    "autoload":     {
+        "psr-0": {
+            "Snide\\Bundle\\MonitorBundle": ""
+        }
+    },
+    "target-dir":   "Snide/Bundle/MonitorBundle"
+}
