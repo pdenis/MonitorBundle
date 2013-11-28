@@ -20,6 +20,9 @@
                 </tr>
             </tbody>    
         </table>
+        <div class="date">
+            <span>Last Update : {{ lastUpdate }}</span>
+        </div>
         <table  class="table table-striped">
             <thead>
             <tr>
@@ -31,7 +34,11 @@
             <tbody>
                 {% for test in tests %}
                     <tr>
-                        <th>{{ test.identifier }}</th>
+                        <th>
+                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                               {{ test.identifier }}
+                            </span>
+                        </th>
                         <th>
                             <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
                                 {% if test.hasFailed() %}

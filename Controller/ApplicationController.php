@@ -91,7 +91,7 @@ class ApplicationController extends Controller
 
             if ($form->isValid()) {
                 // Save instance
-                $this->getManager()->create($form->getData());
+                $this->getManager()->update($form->getData());
                 $this->get('session')->getFlashBag()->add('success', 'Application updated successfully');
 
                 return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));

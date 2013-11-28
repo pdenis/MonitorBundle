@@ -22,11 +22,12 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('repository')
-                ->children()
-                    ->scalarNode('type')->isRequired()->end()
-                    ->arrayNode('application')
                     ->children()
-                        ->scalarNode('filename')->isRequired()->end()
+                        ->scalarNode('type')->isRequired()->end()
+                        ->arrayNode('application')
+                        ->children()
+                            ->scalarNode('filename')->isRequired()->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end();

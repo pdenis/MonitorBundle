@@ -19,9 +19,13 @@ class DashController extends Controller
 
     public function indexAction()
     {
-        $manager = $this->getManager();
-        $manager->addTest(new Monitoring\Test\Environment('test', 'test'));
-        $manager->addTest(new Monitoring\Test\Redis('Redis localhost instance', 'localhost', 6379));
+        $manager = $this->getTestManager();
+
+        $applications = $this->getApplicationManager()->findAll();
+
+        foreach($applications as $application) {
+            $manager->addTests($application->getTests());
+        }
 
         $manager->executeTests();
 
@@ -29,21 +33,17 @@ class DashController extends Controller
             $this->getTemplatePath().'index.html.twig',
             array(
                 'tests'               => $manager->getTests(),
-                'failedTests'         => $manager->getFailedTests(),
+                'failedTests'         => $manager->getNotCriticalFailedTests(),
                 'successTests'        => $manager->getSuccessTests(),
-                'criticalFailedTests' => $manager->getCriticalFailedTests()
+                'criticalFailedTests' => $manager->getCriticalFailedTests(),
+                'lastUpdate'          => date("l jS \of F Y h:i:s A")
             )
         );
     }
 
     public function apiAction()
     {
-        $manager = $this->getManager();
-        $manager->addTest(new Monitoring\Test\Environment('test', 'test'));
-        $manager->addTest(new Monitoring\Test\Redis('Redis localhost instance', 'localhost', 6379));
-        $test = new Monitoring\Test\Redis('Redis another instance', 'localhost', 65555);
-        $test->setCritic(true);
-        $manager->addTest($test);
+        $manager = $this->getTestManager();
 
         $manager->executeTests();
 
@@ -68,8 +68,18 @@ class DashController extends Controller
      *
      * @return TestManager
      */
-    public function getManager()
+    public function getTestManager()
     {
         return $this->get('snide_monitor.test_manager');
+    }
+
+    /**
+     * Get application manager
+     *
+     * @return Monitoring\Manager\ApplicationManager
+     */
+    public function getApplicationManager()
+    {
+        return $this->get('snide_monitor.application_manager');
     }
 }

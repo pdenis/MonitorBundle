@@ -1,8 +1,6 @@
 body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-} 
-
-
+}
 
 .accordion-inner ul li.list_db {
     clear: both;
@@ -102,6 +100,13 @@ h1 {
     background-color: #272726;
 }
 
+body {
+    background-color: #1E1D1C;
+}
+
+.date {
+    margin-bottom:20px;
+}
 .blackground {
     color: #777777;
     background-color: #2E2D2C;
@@ -113,6 +118,7 @@ h1 {
     background: linear-gradient(to bottom, #2E2D2C 0px, #0C0C0C 100%) repeat scroll 0 0 transparent !important;
 
 }
+
 tr.failed th, th.failed {
     color: #000000;
     background-color: #FFFF00;

@@ -9,6 +9,8 @@
 
 namespace Snide\Bundle\MonitorBundle;
 
+use Snide\Bundle\MonitorBundle\DependencyInjection\Compiler\TestPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -18,5 +20,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SnideMonitorBundle extends Bundle
 {
-
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+        $container->addCompilerPass(new TestPass());
+    }
 }
