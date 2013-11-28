@@ -13,6 +13,7 @@
         <service id="snide_monitor.application_manager" class="%snide_monitor.application_manager.class%" public="true">
             <argument type="service" id="snide_monitor.application_repository" />
             <argument>%snide_monitor.model.application.class%</argument>
+            <argument type="service" id="snide_monitor.test_loader"/>
         </service>
         <service id="snide_monitor.test_manager" class="%snide_monitor.test_manager.class%" public="true">
             <argument type="service" id="snide_monitor.test_executor" />

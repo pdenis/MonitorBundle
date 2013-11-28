@@ -1,0 +1,37 @@
+<div id="{{ application.id }}" class="modal hide blackground fade" tabindex="-1" role="dialog" aria-labelledby="Value" aria-hidden="true">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Tests for {{ application.name }}</h3>
+    </div>
+    <div class="modal-body">
+        {% if application.tests %}
+            <table  class="table table-striped">
+                <thead>
+                <tr  class="blackground">
+                    <th class="blackground">Test</th>
+                    <th class="blackground">Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for test in application.tests %}
+                    <tr class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                        <th>{{ test.identifier }}</th>
+                        <th>
+                            {% if test.exception %}
+                                {{ test.exception.message }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+    <div class="modal-footer blackground">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+    </div>
+</div>

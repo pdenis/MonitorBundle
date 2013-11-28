@@ -1,21 +1,22 @@
 {% extends 'SnideMonitorBundle::base.html.twig' %}
 
 {% block main %}
+    <h1>Status Dashboard</h1>
     {% if tests %}
 
         <table  class="table table-striped">
             <thead>
             <tr>
-                <th>Critical tests</th>
-                <th>Failed tests</th>
-                <th>Success tests</th>
+                <th class="title"><span  class="critic">Critical tests</span></th>
+                <th class="title"><span  class="failed">Failed tests</span></th>
+                <th class="title"><span  class="success">Success tests</span></th>
             </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>{{ criticalFailedTests|length }}</th>
-                    <th>{{ failedTests|length }}</th>
-                    <th>{{ successTests|length }}</th>
+                    <th class="title"><span class="critic">{{ criticalFailedTests|length }}</span></th>
+                    <th class="title"><span  class="failed">{{ failedTests|length }}</span></th>
+                    <th class="title"><span  class="success">{{ successTests|length }}</span></th>
                 </tr>
             </tbody>    
         </table>
@@ -31,12 +32,17 @@
                 {% for test in tests %}
                     <tr>
                         <th>{{ test.identifier }}</th>
-                        <th>Status</th>
+                        <th>
+                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                                {% if test.hasFailed() %}
+                                    KO
+                                {% else %}
+                                    OK
+                                {% endif %}
+                            </span></th>
                         <th>
                             {% if test.exception %}
                                 {{ test.exception.message }}
-                            {% else %}
-                                 -
                             {% endif %}
                         </th>
                     </tr>

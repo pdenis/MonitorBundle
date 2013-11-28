@@ -2,6 +2,10 @@ snide_monitor_dashboard:
     pattern:   /dashboard
     defaults:  { _controller: SnideMonitorBundle:Dash:index }
 
+snide_monitor_dashboard_api:
+    pattern:   /dashboard.json
+    defaults:  { _controller: SnideMonitorBundle:Dash:api }
+
 snide_monitor_application:
     pattern:   /applications
     defaults:  { _controller: SnideMonitorBundle:Application:index }

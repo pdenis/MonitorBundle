@@ -1,7 +1,7 @@
 {% extends 'SnideMonitorBundle::base.html.twig' %}
 
 {% block main %}
-        <h2>Please, choose a Redis Instance</h2>
+        <h1>Applications</h1>
 
         <table  class="table table-striped">
             <thead>
@@ -18,12 +18,22 @@
                 <tr>
                     <td>{{ application.name }}</td>
                     <td>{{ application.url }}</td>
+                    <td>{% if application.isWorking() %}
+                            <img width="30" src="{{ asset('/bundles/snidemonitor/images/green.png') }}" />
+                        {% else %}
+                            <img  width="30"  src="{{ asset('/bundles/snidemonitor/images/red.png') }}" />
+                        {% endif %}</td>
                     <td>
-
+                        {% if application.exception %}
+                            {{ application.exception.message }}
+                        {% endif %}
                     </td>
-                    <td></td>
                     <td>
                         <a href="{{ path('snide_monitor_application_edit', {'id': application.id}) }}">Edit</a>
+                        {% if application.tests %}
+                            | <a href="#" data-toggle="modal" data-target="#{{ application.id }}">Show Tests</a>
+                            {% include 'SnideMonitorBundle:Application:modal_tests.html.twig' with {'application': application} %}
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

@@ -30,8 +30,8 @@ class SnideMonitorExtension extends Extension
         $loader->load('model.xml');
         $loader->load('form.xml');
         $loader->load('executor.xml');
+        $loader->load('loader.xml');
         $loader->load('manager.xml');
-
 
         if(isset($config['repository']['type'])) {
             $this->loadRepository($loader, $container, $config['repository']);

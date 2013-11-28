@@ -11,5 +11,15 @@
         <property name="url">
             <constraint name="NotBlank"/>
         </property>
+        <property name="port">
+            <constraint name="NotBlank"/>
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">65635</option>
+                <option name="minMessage">Port must be an integer between 1 and 65635</option>
+                <option name="maxMessage">Port must be an integer between 1 and 65635</option>
+                <option name="invalidMessage">Port must be an integer between 1 and 65635</option>
+            </constraint>
+        </property>
     </class>
 </constraint-mapping>

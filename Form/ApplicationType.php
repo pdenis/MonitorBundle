@@ -40,7 +40,7 @@ class ApplicationType extends AbstractType
     {
         $builder->add('id', 'hidden');
         $builder->add('name', 'text');
-        $builder->add('url', 'text');
+        $builder->add('url', 'text', array('label' => 'Monitoring URL'));
     }
 
     /**

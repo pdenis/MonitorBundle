@@ -10,13 +10,13 @@
     {% endblock %}
 </head>
 
-<body>
-<div class="container-fluid">
+<body class=" blackground">
+{% include 'SnideMonitorBundle:Share:navigation.html.twig' %}
+<div class="container">
     <div class="row">
         <div class="span12">
 
-            {% include 'RingoPhpRedmonBundle:Main:message.html.twig' %}
-
+            {% include 'SnideMonitorBundle:Share:message.html.twig' %}
 
             {% block main %}
 

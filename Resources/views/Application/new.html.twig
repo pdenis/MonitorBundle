@@ -3,26 +3,22 @@
 {% block main %}
 
     <h2>Update an application</h2>
-    <div class="span12">
-        <form action="{{ path('snide_monitor_application_create') }}" method="post" {{ form_enctype(form) }}>
-            <div class="span5">
-                {{ form_row(form.id) }}
-                {{ form_row(form._token) }}
-                <div class="field">
-                    {{ form_errors(form.name) }}
-                    {{ form_label(form.name) }}
-                    {{ form_widget(form.name) }}
-                </div>
-                <div class="field">
-                    {{ form_errors(form.url) }}
-                    {{ form_label(form.url) }}
-                    {{ form_widget(form.url) }}
-                </div>
-            </div>
-            <div class="span12">
-                <input class="btn submit-btn" type="submit" value="Submit" />
-            </div>
-        </form>
-    </div>
+
+    <form action="{{ path('snide_monitor_application_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_row(form.id) }}
+        {{ form_row(form._token) }}
+        <div class="field">
+            {{ form_errors(form.name) }}
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="field">
+            {{ form_errors(form.url) }}
+            {{ form_label(form.url) }}
+            {{ form_widget(form.url) }}
+        </div>
+
+        <input class="btn submit-btn" type="submit" value="Submit" />
+    </form>
 
 {% endblock %}
