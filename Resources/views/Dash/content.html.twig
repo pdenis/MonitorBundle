@@ -20,7 +20,15 @@
     <div class="date">
         <span>Last Update : {{ lastUpdate }}</span>
     </div>
-    <table  class="table table-striped">
+    <div class="filters row">
+        <select class="pull-right" id="category" name="category">
+            <option value="">Categories</option>
+            {% for category in categories %}
+               <option value="{{ category|lower }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <table class="table test-table table-striped">
         <thead>
         <tr>
             <th>Test</th>
@@ -30,20 +38,21 @@
         </thead>
         <tbody>
         {% for test in tests %}
-            <tr>
+            <tr class="{{ test.category|lower }}">
                 <th>
-                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
-                               {{ test.identifier }}
-                            </span>
+                    <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                       {{ test.identifier }}
+                    </span>
                 </th>
                 <th>
-                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
-                                {% if test.hasFailed() %}
-                                    KO
-                                {% else %}
-                                    OK
-                                {% endif %}
-                            </span></th>
+                    <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                        {% if test.hasFailed() %}
+                            KO
+                        {% else %}
+                            OK
+                        {% endif %}
+                    </span>
+                </th>
                 <th>
                     {% if test.exception %}
                         {{ test.exception.message }}

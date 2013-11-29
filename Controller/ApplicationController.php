@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class ApplicationController extends Controller
 {
+    /**
+     * List action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $applications = $this->getManager()->findAll();
@@ -25,6 +30,11 @@ class ApplicationController extends Controller
         );
     }
 
+    /**
+     * Create application action
+     *
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction()
     {
         $form = $this->getForm();
@@ -53,6 +63,12 @@ class ApplicationController extends Controller
         );
     }
 
+    /**
+     * Edit application action
+     *
+     * @param $id application ID
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction($id)
     {
         $application = $this->getManager()->find($id);
@@ -70,6 +86,11 @@ class ApplicationController extends Controller
         );
     }
 
+    /**
+     * New application action
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function newAction()
     {
         return $this->render(
@@ -81,6 +102,12 @@ class ApplicationController extends Controller
         );
     }
 
+    /**
+     * Update application action
+     *
+     * @param $id
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function updateAction($id)
     {
         $form = $this->getForm();
@@ -109,6 +136,12 @@ class ApplicationController extends Controller
         );
     }
 
+    /**
+     * Delete application action
+     *
+     * @param $id
+     * @return RedirectResponse
+     */
     public function deleteAction($id)
     {
         $application = $this->getManager()->find($id);
@@ -132,6 +165,12 @@ class ApplicationController extends Controller
         return 'SnideMonitorBundle:Application:';
     }
 
+    /**
+     * Create application Form and bind it with application instance
+     *
+     * @param null $application
+     * @return \Symfony\Component\Form\Form
+     */
     public function getForm($application = null)
     {
         if($application == null) {

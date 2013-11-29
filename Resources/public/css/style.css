@@ -107,6 +107,10 @@ body {
 .date {
     margin-bottom:20px;
 }
+
+#category {
+    margin-left:20px;
+}
 .blackground {
     color: #777777;
     background-color: #2E2D2C;
@@ -159,7 +163,7 @@ th.title {
     font-size:20px;
 }
 
-input {
+input, select {
     background-color: #9D9D9D !important;
     color: black !important;
 }
