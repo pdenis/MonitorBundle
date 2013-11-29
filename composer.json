@@ -11,7 +11,10 @@
             "email":    "pascal.denis.75@gmail.com"
         }
     ],
-    "require":  "snide/monitoring",
+    "require": {
+        "snide/monitoring": "dev-master",
+        "php": ">=5.3.3"
+    },
     "autoload":     {
         "psr-0": {
             "Snide\\Bundle\\MonitorBundle": ""
