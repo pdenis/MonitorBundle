@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 /**
  * Class ApplicationController
  *
- * @author Pascal DENIS <pascal.denis@businessdecision.com>
+ * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class ApplicationController extends Controller
 {

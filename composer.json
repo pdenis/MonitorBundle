@@ -1,9 +1,9 @@
 {
-    "name":         "pdenis/monitor-bundle",
+    "name":         "snide/monitor-bundle",
     "type":         "symfony-bundle",
     "description":  "Service Monitoring bundle",
     "keywords":     ["bundle", "symfony", "monitoring"],
-    "homepage":     "http://github.com/ringoteam/PhpRedmonBundle",
+    "homepage":     "http://github.com/pdenis/MonitorBundle",
     "license":      "MIT",
     "authors":      [
         {

@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Serializer;
 /**
  * Class DashController
  *
- * @author Pascal DENIS <pascal.denis@businessdecision.com>
+ * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class DashController extends Controller
 {
@@ -24,6 +24,7 @@ class DashController extends Controller
      */
     public function indexAction()
     {
+
         $manager = $this->getTestManager();
 
         // Get applications
@@ -54,7 +55,7 @@ class DashController extends Controller
                 'categories'          => $manager->getCategories(),
                 'applications'        => $applications,
                 'lastUpdate'          => date("l jS \of F Y h:i:s A"),
-                'timer'               => $this->get('service_container')->getParameter('snide_monitor.timer')
+                'timer'               => $this->get('service_container')->getParameter('snide_monitor.timer'),
             )
         );
     }
@@ -66,7 +67,7 @@ class DashController extends Controller
      *
      * @return Response
      */
-    public function apiAction($category = '')
+    public function apiAction($category = null)
     {
         $manager = $this->getTestManager();
         // We use filtered category to get only tests for this category

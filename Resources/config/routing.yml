@@ -3,6 +3,10 @@ snide_monitor_dashboard:
     defaults:  { _controller: SnideMonitorBundle:Dash:index }
 
 snide_monitor_dashboard_api:
+    pattern:   /dashboard.json
+    defaults:  { _controller: SnideMonitorBundle:Dash:api }
+
+snide_monitor_dashboard_api_category:
     pattern:   /dashboard/{category}.json
     defaults:  { _controller: SnideMonitorBundle:Dash:api }
 
