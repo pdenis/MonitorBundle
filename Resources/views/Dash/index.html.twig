@@ -1,61 +1,17 @@
 {% extends 'SnideMonitorBundle::base.html.twig' %}
 
 {% block main %}
-    <h1>Status Dashboard</h1>
-    {% if tests %}
+    {% include 'SnideMonitorBundle:Dash:content.html.twig' with {
+        'tests': tests,
+        'failedTests': failedTests,
+        'successTests': successTests,
+        'criticalFailedTests': criticalFailedTests,
+        'lastUpdate': lastUpdate,
+        'timer': timer
+    } %}
+{% endblock %}
 
-        <table  class="table table-striped">
-            <thead>
-            <tr>
-                <th class="title"><span  class="critic">Critical tests</span></th>
-                <th class="title"><span  class="failed">Failed tests</span></th>
-                <th class="title"><span  class="success">Success tests</span></th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th class="title"><span class="critic">{{ criticalFailedTests|length }}</span></th>
-                    <th class="title"><span  class="failed">{{ failedTests|length }}</span></th>
-                    <th class="title"><span  class="success">{{ successTests|length }}</span></th>
-                </tr>
-            </tbody>    
-        </table>
-        <div class="date">
-            <span>Last Update : {{ lastUpdate }}</span>
-        </div>
-        <table  class="table table-striped">
-            <thead>
-            <tr>
-                <th>Test</th>
-                <th>Status</th>
-                <th>Message</th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for test in tests %}
-                    <tr>
-                        <th>
-                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
-                               {{ test.identifier }}
-                            </span>
-                        </th>
-                        <th>
-                            <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
-                                {% if test.hasFailed() %}
-                                    KO
-                                {% else %}
-                                    OK
-                                {% endif %}
-                            </span></th>
-                        <th>
-                            {% if test.exception %}
-                                {{ test.exception.message }}
-                            {% endif %}
-                        </th>
-                    </tr>
-
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('/bundles/snidemonitor/js/dashboard.js ') }}"></script>
 {% endblock %}

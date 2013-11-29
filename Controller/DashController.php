@@ -29,14 +29,20 @@ class DashController extends Controller
 
         $manager->executeTests();
 
+        if($this->get('request')->isXmlHttpRequest()) {
+            $template = 'content.html.twig';
+        }else {
+            $template = 'index.html.twig';
+        }
         return $this->render(
-            $this->getTemplatePath().'index.html.twig',
+            $this->getTemplatePath().$template,
             array(
                 'tests'               => $manager->getTests(),
                 'failedTests'         => $manager->getNotCriticalFailedTests(),
                 'successTests'        => $manager->getSuccessTests(),
                 'criticalFailedTests' => $manager->getCriticalFailedTests(),
-                'lastUpdate'          => date("l jS \of F Y h:i:s A")
+                'lastUpdate'          => date("l jS \of F Y h:i:s A"),
+                'timer'               => $this->get('service_container')->getParameter('snide_monitor.timer')
             )
         );
     }

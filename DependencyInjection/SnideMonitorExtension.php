@@ -33,6 +33,9 @@ class SnideMonitorExtension extends Extension
         $loader->load('loader.xml');
         $loader->load('manager.xml');
 
+        if(isset($config['timer'])) {
+            $container->setParameter(('snide_monitor.timer'), $config['timer']);
+        }
         if(isset($config['repository']['type'])) {
             $this->loadRepository($loader, $container, $config['repository']);
 

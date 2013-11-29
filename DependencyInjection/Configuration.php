@@ -21,6 +21,9 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('snide_monitor');
         $rootNode
             ->children()
+                ->scalarNode('timer')
+                    ->defaultValue(60)
+                ->end()
                 ->arrayNode('repository')
                     ->children()
                         ->scalarNode('type')->isRequired()->end()
