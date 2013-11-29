@@ -47,13 +47,13 @@ The bundle needs to copy the resources necessary to the web folder. You can use 
 ## Overview
 
 ### Dashboard
-<img src="http://raw.github.com/pdenis/MonitorBundle/docs/screenshots/monitor_dashboard.jpg" alt="Dashboard">
+<img src="https://raw.github.com/pdenis/MonitorBundle/master/docs/screenshots/monitor_dashboard.jpg" alt="Dashboard">
 
 ### Applications list
-<img src="http://raw.github.com/pdenis/MonitorBundle/docs/screenshots/monitor_applications.jpg" alt="Applications list">
+<img src="https://raw.github.com/pdenis/MonitorBundle/master/docs/screenshots/monitor_applications.jpg" alt="Applications list">
 
 ### Application test
-<img src="http://raw.github.com/pdenis/MonitorBundle/docs/screenshots/monitor_applications_tests.jpg" alt="Application test">
+<img src="https://raw.github.com/pdenis/MonitorBundle/master/docs/screenshots/monitor_applications_tests.jpg" alt="Application test">
 
 ## Define your test service
 
