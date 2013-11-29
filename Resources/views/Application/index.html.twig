@@ -34,6 +34,7 @@
                             | <a href="#" data-toggle="modal" data-target="#{{ application.id }}">Show Tests</a>
                             {% include 'SnideMonitorBundle:Application:modal_tests.html.twig' with {'application': application} %}
                         {% endif %}
+                        | <a href="{{ path('snide_monitor_application_delete', {'id': application.id}) }}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}

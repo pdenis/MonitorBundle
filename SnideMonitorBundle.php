@@ -27,5 +27,6 @@ class SnideMonitorBundle extends Bundle
     {
         parent::build($container);
         $container->addCompilerPass(new TestPass());
+
     }
 }
