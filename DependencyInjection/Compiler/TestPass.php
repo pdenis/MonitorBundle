@@ -24,19 +24,21 @@ class TestPass implements CompilerPassInterface
             'snide_monitor.test'
         );
 
-        $tests = array();
-
         $definition = $container->getDefinition(
             'snide_monitor.test_manager'
         );
 
         // Create list of tests
-        if(is_array($testsServices)) {
+        if (is_array($testsServices)) {
             foreach($testsServices as $id => $attributes) {
                 $test = $container->get($id);
 
-                if(!is_subclass_of($test, 'Snide\Monitoring\Model\Test')) {
-                   throw \Exception('Service %s is not a Test class. You must extends Snide\Monitoring\Model\Test class', $id);
+                if (!is_subclass_of($test, 'Snide\Monitoring\Model\Test')) {
+                    throw \Exception(
+                       'Service %s is not a Test class.
+                        You must extends Snide\Monitoring\Model\Test class',
+                       $id
+                    );
                 }
                 // Add test to the test manager
                 $definition->addMethodCall(

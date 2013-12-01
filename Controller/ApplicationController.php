@@ -48,7 +48,7 @@ class ApplicationController extends Controller
                 $this->get('session')->getFlashBag()->add('success', 'Application created successfully');
 
                 return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));
-            }else {
+            } else {
                 $this->get('session')->getFlashBag()->add('error', 'Some errors have been found');
 
             }
@@ -57,7 +57,7 @@ class ApplicationController extends Controller
         return $this->render(
             $this->getTemplatePath().'new.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $form->getErrors()
             )
         );
@@ -72,15 +72,15 @@ class ApplicationController extends Controller
     public function editAction($id)
     {
         $application = $this->getManager()->find($id);
-        if(!$application) {
+        if (!$application) {
             return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));
         }
         $form = $this->getForm($application);
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',
             array(
-                'form' => $form->createView(),
-                'id'   => $id,
+                'form'   => $form->createView(),
+                'id'     => $id,
                 'errors' => array()
             )
         );
@@ -96,7 +96,7 @@ class ApplicationController extends Controller
         return $this->render(
             $this->getTemplatePath().'new.html.twig',
             array(
-                'form' => $this->getForm()->createView(),
+                'form'   => $this->getForm()->createView(),
                 'errors' => array()
             )
         );
@@ -122,7 +122,7 @@ class ApplicationController extends Controller
                 $this->get('session')->getFlashBag()->add('success', 'Application updated successfully');
 
                 return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));
-            }else {
+            } else {
                 $this->get('session')->getFlashBag()->add('error', 'Some errors found');
             }
         }
@@ -130,7 +130,7 @@ class ApplicationController extends Controller
         return $this->render(
             $this->getTemplatePath().'edit.html.twig',
             array(
-                'form' => $form->createView(),
+                'form'   => $form->createView(),
                 'errors' => $form->getErrors()
             )
         );
@@ -145,10 +145,10 @@ class ApplicationController extends Controller
     public function deleteAction($id)
     {
         $application = $this->getManager()->find($id);
-        if($application) {
+        if ($application) {
             $this->getManager()->delete($application);
             $this->get('session')->getFlashBag()->add('success', 'Application has been deleted successfully');
-        }else {
+        } else {
             $this->get('session')->getFlashBag()->add('error', 'This application does not exist');
         }
 
@@ -173,7 +173,7 @@ class ApplicationController extends Controller
      */
     public function getForm($application = null)
     {
-        if($application == null) {
+        if ($application == null) {
             $application = $this->getManager()->createNew();
         }
 

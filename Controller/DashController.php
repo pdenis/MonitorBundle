@@ -39,9 +39,9 @@ class DashController extends Controller
         $manager->executeTests();
 
         // Template depends on context
-        if($this->get('request')->isXmlHttpRequest()) {
+        if ($this->get('request')->isXmlHttpRequest()) {
             $template = 'content.html.twig';
-        }else {
+        } else {
             $template = 'index.html.twig';
         }
 

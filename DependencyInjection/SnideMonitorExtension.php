@@ -33,13 +33,13 @@ class SnideMonitorExtension extends Extension
         $loader->load('loader.xml');
         $loader->load('manager.xml');
 
-        if(isset($config['timer'])) {
+        if (isset($config['timer'])) {
             $container->setParameter(('snide_monitor.timer'), $config['timer']);
         }
-        if(isset($config['repository']['type'])) {
+        if (isset($config['repository']['type'])) {
             $this->loadRepository($loader, $container, $config['repository']);
 
-        }else {
+        } else {
             throw new \Exception('You must define repository type parameter');
         }
     }
@@ -54,11 +54,14 @@ class SnideMonitorExtension extends Extension
      */
     protected function loadRepository($loader, ContainerBuilder $container, array $repository)
     {
-        if($repository['type'] == 'yaml') {
-            if(!isset($repository['application']['filename'])) {
+        if ($repository['type'] == 'yaml') {
+            if (!isset($repository['application']['filename'])) {
                 throw new \Exception('You must define filename parameter for application yaml repository');
             }
-            $container->setParameter('snide_monitor.application_repository.filename', $repository['application']['filename']);
+            $container->setParameter(
+                'snide_monitor.application_repository.filename',
+                $repository['application']['filename']
+            );
         }
 
         $loader->load('repository/'.$repository['type'].'.xml');

@@ -3,6 +3,8 @@ SnideMonitorBundle
 
 Symfony 2 monitoring bundle based on Test class
 
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pdenis/MonitorBundle/badges/quality-score.png?s=db430d0b51814554d04706e8790a6642ae4322f3)](https://scrutinizer-ci.com/g/pdenis/MonitorBundle/)
+
 ## features
 - Test class based
 - Application management & chaining (via json exposition)

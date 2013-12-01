@@ -8,7 +8,7 @@ $(document).ready(function(){
     }, $('#infos').data('timer') * 1000);
 
     $('#category').on('change', function() {
-        if($(this).val() == '') {
+        if ($(this).val() == '') {
             $('.test-table').find('tr').show();
         } else {
             $('.test-table').find('tr').hide();
