@@ -24,14 +24,13 @@ class DashController extends Controller
      */
     public function indexAction()
     {
-
         $manager = $this->getTestManager();
 
         // Get applications
         $applications = $this->getApplicationManager()->findAll();
 
         // Aggregate application's tests
-        foreach($applications as $application) {
+        foreach ($applications as $application) {
             $manager->addTests($application->getTests());
         }
 

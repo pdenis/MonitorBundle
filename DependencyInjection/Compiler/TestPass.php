@@ -30,7 +30,7 @@ class TestPass implements CompilerPassInterface
 
         // Create list of tests
         if (is_array($testsServices)) {
-            foreach($testsServices as $id => $attributes) {
+            foreach ($testsServices as $id => $attributes) {
                 $test = $container->get($id);
 
                 if (!is_subclass_of($test, 'Snide\Monitoring\Model\Test')) {
