@@ -35,9 +35,9 @@ class TestPass implements CompilerPassInterface
 
                 if (!is_subclass_of($test, 'Snide\Monitoring\Model\Test')) {
                     throw \Exception(
-                       'Service %s is not a Test class.
-                        You must extends Snide\Monitoring\Model\Test class',
-                       $id
+                        'Service %s is not a Test class.
+                         You must extends Snide\Monitoring\Model\Test class',
+                        $id
                     );
                 }
                 // Add test to the test manager

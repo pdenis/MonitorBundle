@@ -6,8 +6,6 @@ use Snide\Monitoring;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * Class DashController
@@ -45,16 +43,16 @@ class DashController extends Controller
         }
 
         return $this->render(
-            $this->getTemplatePath().$template,
+            $this->getTemplatePath() . $template,
             array(
-                'tests'               => $manager->getTests(),
-                'failedTests'         => $manager->getNotCriticalFailedTests(),
-                'successTests'        => $manager->getSuccessTests(),
+                'tests' => $manager->getTests(),
+                'failedTests' => $manager->getNotCriticalFailedTests(),
+                'successTests' => $manager->getSuccessTests(),
                 'criticalFailedTests' => $manager->getCriticalFailedTests(),
-                'categories'          => $manager->getCategories(),
-                'applications'        => $applications,
-                'lastUpdate'          => date("l jS \of F Y h:i:s A"),
-                'timer'               => $this->get('service_container')->getParameter('snide_monitor.timer'),
+                'categories' => $manager->getCategories(),
+                'applications' => $applications,
+                'lastUpdate' => date("l jS \of F Y h:i:s A"),
+                'timer' => $this->get('service_container')->getParameter('snide_monitor.timer'),
             )
         );
     }
@@ -81,6 +79,7 @@ class DashController extends Controller
 
         return $response;
     }
+
     /**
      * Get the template path for this controller
      *

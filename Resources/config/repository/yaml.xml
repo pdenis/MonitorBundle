@@ -5,11 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="snide_monitor.application_repository.class">Snide\Monitoring\Repository\Yaml\ApplicationRepository</parameter>
+        <parameter key="snide_monitor.application_repository.class">
+            Snide\Monitoring\Repository\Yaml\ApplicationRepository
+        </parameter>
     </parameters>
 
     <services>
-        <service id="snide_monitor.application_repository" class="%snide_monitor.application_repository.class%" public="false">
+        <service id="snide_monitor.application_repository" class="%snide_monitor.application_repository.class%"
+                 public="false">
             <argument>%snide_monitor.model.application.class%</argument>
             <argument>%snide_monitor.application_repository.filename%</argument>
         </service>

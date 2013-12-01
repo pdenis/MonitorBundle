@@ -23,7 +23,7 @@ class ApplicationController extends Controller
         $applications = $this->getManager()->findAll();
 
         return $this->render(
-            $this->getTemplatePath().'index.html.twig',
+            $this->getTemplatePath() . 'index.html.twig',
             array(
                 'applications' => $applications
             )
@@ -55,9 +55,9 @@ class ApplicationController extends Controller
         }
 
         return $this->render(
-            $this->getTemplatePath().'new.html.twig',
+            $this->getTemplatePath() . 'new.html.twig',
             array(
-                'form'   => $form->createView(),
+                'form' => $form->createView(),
                 'errors' => $form->getErrors()
             )
         );
@@ -77,10 +77,10 @@ class ApplicationController extends Controller
         }
         $form = $this->getForm($application);
         return $this->render(
-            $this->getTemplatePath().'edit.html.twig',
+            $this->getTemplatePath() . 'edit.html.twig',
             array(
-                'form'   => $form->createView(),
-                'id'     => $id,
+                'form' => $form->createView(),
+                'id' => $id,
                 'errors' => array()
             )
         );
@@ -94,9 +94,9 @@ class ApplicationController extends Controller
     public function newAction()
     {
         return $this->render(
-            $this->getTemplatePath().'new.html.twig',
+            $this->getTemplatePath() . 'new.html.twig',
             array(
-                'form'   => $this->getForm()->createView(),
+                'form' => $this->getForm()->createView(),
                 'errors' => array()
             )
         );
@@ -128,9 +128,9 @@ class ApplicationController extends Controller
         }
 
         return $this->render(
-            $this->getTemplatePath().'edit.html.twig',
+            $this->getTemplatePath() . 'edit.html.twig',
             array(
-                'form'   => $form->createView(),
+                'form' => $form->createView(),
                 'errors' => $form->getErrors()
             )
         );

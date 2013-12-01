@@ -1,19 +1,20 @@
 <h1>Status Dashboard</h1>
 {% if tests %}
-    <div style="display:none" id="infos" data-timer="{{ timer }}" data-rel="{{ path('snide_monitor_dashboard') }}"></div>
-    <table  class="table table-striped">
+    <div style="display:none" id="infos" data-timer="{{ timer }}"
+         data-rel="{{ path('snide_monitor_dashboard') }}"></div>
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th class="title"><span  class="critic">Critical tests</span></th>
-            <th class="title"><span  class="failed">Failed tests</span></th>
-            <th class="title"><span  class="success">Success tests</span></th>
+            <th class="title"><span class="critic">Critical tests</span></th>
+            <th class="title"><span class="failed">Failed tests</span></th>
+            <th class="title"><span class="success">Success tests</span></th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th class="title"><span class="critic">{{ criticalFailedTests|length }}</span></th>
-            <th class="title"><span  class="failed">{{ failedTests|length }}</span></th>
-            <th class="title"><span  class="success">{{ successTests|length }}</span></th>
+            <th class="title"><span class="failed">{{ failedTests|length }}</span></th>
+            <th class="title"><span class="success">{{ successTests|length }}</span></th>
         </tr>
         </tbody>
     </table>
@@ -24,7 +25,7 @@
         <select class="pull-right" id="category" name="category">
             <option value="">Categories</option>
             {% for category in categories %}
-               <option value="{{ category|lower }}">{{ category }}</option>
+                <option value="{{ category|lower }}">{{ category }}</option>
             {% endfor %}
         </select>
     </div>

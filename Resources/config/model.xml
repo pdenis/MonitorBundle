@@ -10,6 +10,6 @@
     </parameters>
     <services>
         <service id="snide_monitor.model.application" class="%snide_monitor.model.application.class%"/>
-        <service id="snide_monitor.model.test" class="%snide_monitor.model.test.class%" />
+        <service id="snide_monitor.model.test" class="%snide_monitor.model.test.class%"/>
     </services>
 </container>

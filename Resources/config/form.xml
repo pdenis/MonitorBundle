@@ -6,12 +6,13 @@
 
     <parameters>
         <parameter key="snide_monitor.form.application.name">snide_monitor_application_type</parameter>
-        <parameter key="snide_monitor.form.application_type.class">Snide\Bundle\MonitorBundle\Form\ApplicationType</parameter>
+        <parameter key="snide_monitor.form.application_type.class">Snide\Bundle\MonitorBundle\Form\ApplicationType
+        </parameter>
     </parameters>
 
     <services>
         <service id="snide_monitor.form.application_type" class="%snide_monitor.form.application_type.class%">
-            <tag name="form.type" alias="%snide_monitor.form.application.name%" />
+            <tag name="form.type" alias="%snide_monitor.form.application.name%"/>
             <argument>%snide_monitor.model.application.class%</argument>
         </service>
     </services>
