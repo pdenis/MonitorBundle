@@ -62,6 +62,6 @@ class ApplicationType extends AbstractType
      */
     public function getName()
     {
-        return 'ringo_php_redmon_instance_type';
+        return 'snide_monitor_application_type';
     }
 }
