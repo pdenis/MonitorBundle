@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Snide\Bundle\MonitorBundle\Form;
 
 use Symfony\Component\Form\AbstractType;

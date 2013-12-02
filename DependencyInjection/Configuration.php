@@ -18,22 +18,20 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('snide_monitor');
-        $rootNode
-            ->children()
+        $treeBuilder->root('snide_monitor')->children()
             ->scalarNode('timer')
-            ->defaultValue(60)
+                ->defaultValue(60)
             ->end()
             ->arrayNode('repository')
             ->children()
-            ->scalarNode('type')->isRequired()->end()
-            ->arrayNode('application')
-            ->children()
-            ->scalarNode('filename')->isRequired()->end()
+                ->scalarNode('type')->isRequired()->end()
+                ->arrayNode('application')
+                    ->children()
+                        ->scalarNode('filename')->isRequired()->end()
+                    ->end()
+                ->end()
             ->end()
-            ->end()
-            ->end()
-            ->end();
+        ->end();
 
         return $treeBuilder;
     }

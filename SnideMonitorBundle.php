@@ -1,12 +1,5 @@
 <?php
 
-/*
- * This file is part of the SnideMonitorBundle.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Snide\Bundle\MonitorBundle;
 
 use Snide\Bundle\MonitorBundle\DependencyInjection\Compiler\TestPass;
@@ -27,6 +20,5 @@ class SnideMonitorBundle extends Bundle
     {
         parent::build($container);
         $container->addCompilerPass(new TestPass());
-
     }
 }

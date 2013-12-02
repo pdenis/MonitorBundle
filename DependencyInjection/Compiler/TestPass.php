@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Snide\Bundle\MonitorBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -30,7 +29,7 @@ class TestPass implements CompilerPassInterface
 
         // Create list of tests
         if (is_array($testsServices)) {
-            foreach ($testsServices as $id => $attributes) {
+            foreach (array_keys($testsServices) as $id) {
                 $test = $container->get($id);
 
                 if (!is_subclass_of($test, 'Snide\Monitoring\Model\Test')) {

@@ -33,37 +33,54 @@ class SnideMonitorExtension extends Extension
         $loader->load('loader.xml');
         $loader->load('manager.xml');
 
-        if (isset($config['timer'])) {
-            $container->setParameter(('snide_monitor.timer'), $config['timer']);
-        }
-        if (isset($config['repository']['type'])) {
-            $this->loadRepository($loader, $container, $config['repository']);
+        $this->loadRepository($loader, $container, $config);
+        $this->loadTimer($loader, $container, $config);
 
-        } else {
-            throw new \Exception('You must define repository type parameter');
-        }
+
     }
 
     /**
      * Load repository
      *
      * @param XmlFileLoader $loader
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     * @param array $repository Repository parameters
+     * @param ContainerBuilder $container
+     * @param array $config
      * @throws \Exception
      */
-    protected function loadRepository($loader, ContainerBuilder $container, array $repository)
+    protected function loadRepository($loader, ContainerBuilder $container, array $config)
     {
-        if ($repository['type'] == 'yaml') {
-            if (!isset($repository['application']['filename'])) {
-                throw new \Exception('You must define filename parameter for application yaml repository');
+        if (isset($config['repository']['type'])) {
+            if ($config['repository']['type'] == 'yaml') {
+                if (!isset($config['repository']['application']['filename'])) {
+                    throw new \Exception('You must define filename parameter for application yaml repository');
+                }
+                $container->setParameter(
+                    'snide_monitor.application_repository.filename',
+                    $config['repository']['application']['filename']
+                );
             }
-            $container->setParameter(
-                'snide_monitor.application_repository.filename',
-                $repository['application']['filename']
-            );
+
+            $loader->load('repository/' . $config['repository']['type'] . '.xml');
+        } else {
+            throw new \Exception('You must define repository type parameter');
         }
 
-        $loader->load('repository/' . $repository['type'] . '.xml');
+    }
+
+    /**
+     * Load timer
+     *
+     * @param XmlFileLoader $loader
+     * @param ContainerBuilder $container
+     * @param array $config
+     * @throws \Exception
+     */
+    protected function loadTimer($loader, ContainerBuilder $container, array $config)
+    {
+        if (isset($config['timer'])) {
+            $container->setParameter(('snide_monitor.timer'), $config['timer']);
+        }else {
+            throw new \Exception('You must define timer parameter');
+        }
     }
 }
