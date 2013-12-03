@@ -265,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdenis/monitoring.git",
-                "reference": "4e2262437aa85540e04cef722de4776a399e9b93"
+                "reference": "09273cdde734a3752ba5837caa1e8372e81166c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdenis/monitoring/zipball/4e2262437aa85540e04cef722de4776a399e9b93",
-                "reference": "4e2262437aa85540e04cef722de4776a399e9b93",
+                "url": "https://api.github.com/repos/pdenis/monitoring/zipball/09273cdde734a3752ba5837caa1e8372e81166c8",
+                "reference": "09273cdde734a3752ba5837caa1e8372e81166c8",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pascal DENIS",
+                    "name": "Pascal Denis",
                     "email": "pascal.denis.75@gmail.com"
                 }
             ],
@@ -304,7 +304,7 @@
                 "monitoring",
                 "snide"
             ],
-            "time": "2013-12-01 21:07:06"
+            "time": "2013-12-03 21:38:33"
         },
         {
             "name": "symfony/config",
