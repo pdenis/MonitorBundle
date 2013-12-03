@@ -6,8 +6,7 @@
 
     <parameters>
         <parameter key="snide_monitor.form.application.name">snide_monitor_application_type</parameter>
-        <parameter key="snide_monitor.form.application_type.class">Snide\Bundle\MonitorBundle\Form\ApplicationType
-        </parameter>
+        <parameter key="snide_monitor.form.application_type.class">Snide\Bundle\MonitorBundle\Form\ApplicationType</parameter>
     </parameters>
 
     <services>

@@ -4,6 +4,7 @@ namespace Snide\Bundle\MonitorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -49,10 +50,11 @@ class SnideMonitorExtension extends Extension
      */
     protected function loadRepository($loader, ContainerBuilder $container, array $config)
     {
+
         if (isset($config['repository']['type'])) {
             if ($config['repository']['type'] == 'yaml') {
                 if (!isset($config['repository']['application']['filename'])) {
-                    throw new \Exception('You must define filename parameter for application yaml repository');
+                    throw new InvalidConfigurationException('You must define filename parameter for application yaml repository');
                 }
                 $container->setParameter(
                     'snide_monitor.application_repository.filename',
@@ -62,7 +64,7 @@ class SnideMonitorExtension extends Extension
 
             $loader->load('repository/' . $config['repository']['type'] . '.xml');
         } else {
-            throw new \Exception('You must define repository type parameter');
+            throw new InvalidConfigurationException('You must define repository type parameter');
         }
 
     }
@@ -79,8 +81,8 @@ class SnideMonitorExtension extends Extension
     {
         if (isset($config['timer'])) {
             $container->setParameter(('snide_monitor.timer'), $config['timer']);
-        }else {
-            throw new \Exception('You must define timer parameter');
+        } else {
+            throw new InvalidConfigurationException('You must define timer parameter');
         }
     }
 }
