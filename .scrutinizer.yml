@@ -7,7 +7,7 @@ tools:
         filter:
             paths: {  }
             excluded_paths:
-                - '*/Tests/*'
+                - 'Tests/*'
         config:
             rulesets:
                 - codesize
@@ -22,7 +22,7 @@ tools:
         enabled: true
         filter:
             excluded_paths:
-                - '*/Tests/*'
+                - 'Tests/*'
         extensions:
             - php
     php_code_sniffer:
@@ -34,7 +34,7 @@ tools:
         command: phpcs
         filter:
             excluded_paths:
-                - '*/Tests/*'
+                - 'Tests/*'
     sensiolabs_security_checker:
         enabled: true
     php_pdepend:
