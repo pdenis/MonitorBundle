@@ -41,7 +41,7 @@ class ApplicationController extends Controller
 
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->bind($request);
+            $form->submit($request);
             if ($form->isValid()) {
 
                 $this->getManager()->create($form->getData());
@@ -114,7 +114,7 @@ class ApplicationController extends Controller
         // Get request
         $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->bind($request);
+            $form->submit($request);
 
             if ($form->isValid()) {
                 // Save instance
@@ -166,7 +166,7 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Create application Form and bind it with application instance
+     * Create application Form and submit it with application instance
      *
      * @param null $application
      * @return \Symfony\Component\Form\Form
