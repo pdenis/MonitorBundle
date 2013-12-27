@@ -6,6 +6,7 @@ use Snide\Monitoring;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Class DashController
@@ -18,7 +19,9 @@ class DashController extends Controller
     /**
      * Dashboard Action
      *
-     * @return Response
+     * @return array
+     *
+     * @Template
      */
     public function indexAction()
     {
@@ -42,18 +45,15 @@ class DashController extends Controller
             $template = 'index.html.twig';
         }
 
-        return $this->render(
-            $this->getTemplatePath() . $template,
-            array(
-                'tests' => $manager->getTests(),
-                'failedTests' => $manager->getNotCriticalFailedTests(),
-                'successTests' => $manager->getSuccessTests(),
-                'criticalFailedTests' => $manager->getCriticalFailedTests(),
-                'categories' => $manager->getCategories(),
-                'applications' => $applications,
-                'lastUpdate' => date("l jS \of F Y h:i:s A"),
-                'timer' => $this->get('service_container')->getParameter('snide_monitor.timer'),
-            )
+        return array(
+            'tests' => $manager->getTests(),
+            'failedTests' => $manager->getNotCriticalFailedTests(),
+            'successTests' => $manager->getSuccessTests(),
+            'criticalFailedTests' => $manager->getCriticalFailedTests(),
+            'categories' => $manager->getCategories(),
+            'applications' => $applications,
+            'lastUpdate' => date("l jS \of F Y h:i:s A"),
+            'timer' => $this->get('service_container')->getParameter('snide_monitor.timer'),
         );
     }
 
@@ -78,16 +78,6 @@ class DashController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-    }
-
-    /**
-     * Get the template path for this controller
-     *
-     * @return string
-     */
-    protected function getTemplatePath()
-    {
-        return 'SnideMonitorBundle:Dash:';
     }
 
     /**

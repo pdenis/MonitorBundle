@@ -29,7 +29,7 @@ snide_monitor_application_edit:
     defaults:  { _controller: SnideMonitorBundle:Application:edit }
 
 snide_monitor_application_update:
-    pattern:   /application/update/{id}
+    pattern:   /application/update
     defaults:  { _controller: SnideMonitorBundle:Application:update }
     requirements:
         _method:  POST

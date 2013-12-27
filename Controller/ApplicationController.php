@@ -5,6 +5,8 @@ namespace Snide\Bundle\MonitorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ApplicationController
@@ -16,32 +18,33 @@ class ApplicationController extends Controller
     /**
      * List action
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return array
+     *
+     * @Template
      */
     public function indexAction()
     {
         $applications = $this->getManager()->findAll();
 
-        return $this->render(
-            $this->getTemplatePath() . 'index.html.twig',
-            array(
-                'applications' => $applications
-            )
+        return array(
+            'applications' => $applications
         );
     }
 
     /**
      * Create application action
      *
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return array|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *
+     * @Template("SnideMonitorBundle:application:new")
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         $form = $this->getForm();
 
-        $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->submit($request);
+            $form->handleRequest($request);
             if ($form->isValid()) {
 
                 $this->getManager()->create($form->getData());
@@ -67,7 +70,9 @@ class ApplicationController extends Controller
      * Edit application action
      *
      * @param $id application ID
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return array
+     *
+     * @Template
      */
     public function editAction($id)
     {
@@ -76,45 +81,41 @@ class ApplicationController extends Controller
             return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));
         }
         $form = $this->getForm($application);
-        return $this->render(
-            $this->getTemplatePath() . 'edit.html.twig',
-            array(
-                'form' => $form->createView(),
-                'id' => $id,
-                'errors' => array()
-            )
+        return array(
+            'form' => $form->createView(),
+            'id' => $id,
+            'errors' => array()
         );
     }
 
     /**
      * New application action
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return array
+     *
+     * @Template
      */
     public function newAction()
     {
-        return $this->render(
-            $this->getTemplatePath() . 'new.html.twig',
-            array(
-                'form' => $this->getForm()->createView(),
-                'errors' => array()
-            )
+        return array(
+            'form' => $this->getForm()->createView(),
+            'errors' => array()
         );
     }
 
     /**
      * Update application action
      *
-     * @param $id
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return array|RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *
+     * @Template("SnideMonitorBundle:application:edit")
      */
-    public function updateAction($id)
+    public function updateAction(Request $request)
     {
         $form = $this->getForm();
-        // Get request
-        $request = $this->get('request');
         if ('POST' == $request->getMethod()) {
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
                 // Save instance
@@ -127,12 +128,9 @@ class ApplicationController extends Controller
             }
         }
 
-        return $this->render(
-            $this->getTemplatePath() . 'edit.html.twig',
-            array(
-                'form' => $form->createView(),
-                'errors' => $form->getErrors()
-            )
+        return array(
+            'form' => $form->createView(),
+            'errors' => $form->getErrors()
         );
     }
 
@@ -153,16 +151,6 @@ class ApplicationController extends Controller
         }
 
         return new RedirectResponse($this->generateUrl('snide_monitor_dashboard'));
-    }
-
-    /**
-     * Get template path for this controller
-     *
-     * @return string
-     */
-    protected function getTemplatePath()
-    {
-        return 'SnideMonitorBundle:Application:';
     }
 
     /**
