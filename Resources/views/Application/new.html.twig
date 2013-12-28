@@ -2,23 +2,34 @@
 
 {% block main %}
 
-    <h2>Update an application</h2>
+    <div class="row">
+        <div id="content" class="span12">
+            <h1>Create an application</h1>
+            <form action="{{ path('snide_monitor_application_create') }}" method="post" {{ form_enctype(form) }}>
 
-    <form action="{{ path('snide_monitor_application_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_row(form.id) }}
-        {{ form_row(form._token) }}
-        <div class="field">
-            {{ form_errors(form.name) }}
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
-        </div>
-        <div class="field">
-            {{ form_errors(form.url) }}
-            {{ form_label(form.url) }}
-            {{ form_widget(form.url) }}
-        </div>
+                {{ form_row(form.id) }}
+                {{ form_row(form._token) }}
 
-        <input class="btn submit-btn" type="submit" value="Submit"/>
-    </form>
+                <div class="control-group">
+                    {{ form_errors(form.name) }}
+                    {{ form_label(form.name) }}
+                    <div class="controls form-group">
+                        {{ form_widget(form.name) }}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    {{ form_errors(form.url) }}
+                    {{ form_label(form.url) }}
+                    <div class="controls form-group">
+                        {{ form_widget(form.url) }}
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-sub" type="submit" value="Submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

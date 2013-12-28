@@ -21,7 +21,7 @@
     <div class="date">
         <span>Last Update : {{ lastUpdate }}</span>
     </div>
-    <div class="filters row">
+    <div class="filters">
         <select class="pull-right" id="category" name="category">
             <option value="">Categories</option>
             {% for category in categories %}
@@ -40,25 +40,23 @@
         <tbody>
         {% for test in tests %}
             <tr class="{{ test.category|lower }}">
-                <th>
-                    <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
-                       {{ test.identifier }}
-                    </span>
-                </th>
-                <th>
-                    <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}">
+                <td>
+                   {{ test.identifier }}
+                </td>
+                <td>
+                    <span class="{% if test.hasFailed() %}{% if test.isCritic() %}critic{% else %}failed{% endif %}{% else %}success{% endif %}"><b>
                         {% if test.hasFailed() %}
                             KO
                         {% else %}
                             OK
                         {% endif %}
-                    </span>
-                </th>
-                <th>
+                    </b></span>
+                </td>
+                <td>
                     {% if test.exception %}
-                        {{ test.exception.message }}
+                        <b>{{ test.exception.message }}</>
                     {% endif %}
-                </th>
+                </td>
             </tr>
 
         {% endfor %}

@@ -12,19 +12,16 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="background">
 {% include 'SnideMonitorBundle:Share:navigation.html.twig' %}
 <div class="container">
-    <div class="row">
-        <div id="content" class="span12">
 
-            {% include 'SnideMonitorBundle:Share:message.html.twig' %}
 
-            {% block main %}
+    {% include 'SnideMonitorBundle:Share:message.html.twig' %}
 
-            {% endblock %}
-        </div>
-    </div>
+    {% block main %}
+
+    {% endblock %}
 </div>
 {% block javascript %}
     <script src="http://code.jquery.com/jquery-latest.js"></script>
