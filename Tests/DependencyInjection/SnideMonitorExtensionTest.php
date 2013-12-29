@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the SnideMonitor bundle.
+ *
+ * (c) Pascal DENIS <pascal.denis.75@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Snide\Bundle\MonitorBundle\Tests\DependencyInjection;
 
 use Snide\Bundle\MonitorBundle\DependencyInjection\SnideMonitorExtension;
@@ -9,7 +18,7 @@ use Symfony\Component\Yaml\Parser;
 /**
  * Class SnideMonitorExtensionTest
  *
- * @author Pascal DENIS <pascal.denis@businessdecision.com>
+ * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
 class SnideMonitorExtensionTest extends \PHPUnit_Framework_TestCase
 {
