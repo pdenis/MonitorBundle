@@ -167,7 +167,7 @@ class ApplicationController extends Controller
      * @param null $application
      * @return \Symfony\Component\Form\Form
      */
-    public function getForm($application = null)
+    protected function getForm($application = null)
     {
         if ($application == null) {
             $application = $this->getManager()->createNew();
@@ -184,7 +184,7 @@ class ApplicationController extends Controller
      *
      * @return mixed
      */
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('snide_monitor.application_manager');
     }

@@ -15,7 +15,6 @@ use Snide\Monitoring;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Class DashController
@@ -26,11 +25,9 @@ class DashController extends Controller
 {
 
     /**
-     * Dashboard Action
+     * Dashboard action
      *
-     * @return array
-     *
-     * @Template
+     * @return Response
      */
     public function indexAction()
     {
@@ -49,20 +46,23 @@ class DashController extends Controller
 
         // Template depends on context
         if ($this->get('request')->isXmlHttpRequest()) {
-            $template = 'content.html.twig';
+            $template = 'SnideMonitorBundle:Dash:content.html.twig';
         } else {
-            $template = 'index.html.twig';
+            $template = 'SnideMonitorBundle:Dash:index.html.twig';
         }
 
-        return array(
-            'tests' => $manager->getTests(),
-            'failedTests' => $manager->getNotCriticalFailedTests(),
-            'successTests' => $manager->getSuccessTests(),
-            'criticalFailedTests' => $manager->getCriticalFailedTests(),
-            'categories' => $manager->getCategories(),
-            'applications' => $applications,
-            'lastUpdate' => date("l jS \of F Y h:i:s A"),
-            'timer' => $this->get('service_container')->getParameter('snide_monitor.timer'),
+        return $this->render(
+            $template,
+            array(
+                'tests' => $manager->getTests(),
+                'failedTests' => $manager->getNotCriticalFailedTests(),
+                'successTests' => $manager->getSuccessTests(),
+                'criticalFailedTests' => $manager->getCriticalFailedTests(),
+                'categories' => $manager->getCategories(),
+                'applications' => $applications,
+                'lastUpdate' => date("l jS \of F Y h:i:s A"),
+                'timer' => $this->get('service_container')->getParameter('snide_monitor.timer'),
+           )
         );
     }
 
@@ -94,7 +94,7 @@ class DashController extends Controller
      *
      * @return TestManager
      */
-    public function getTestManager()
+    protected function getTestManager()
     {
         return $this->get('snide_monitor.test_manager');
     }
@@ -104,7 +104,7 @@ class DashController extends Controller
      *
      * @return Monitoring\Manager\ApplicationManager
      */
-    public function getApplicationManager()
+    protected function getApplicationManager()
     {
         return $this->get('snide_monitor.application_manager');
     }
