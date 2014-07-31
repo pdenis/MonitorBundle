@@ -3,8 +3,8 @@ SnideMonitorBundle
 
 Symfony 2 monitoring bundle based on Test class
 
-[![Build Status](https://travis-ci.org/pdenis/MonitorBundle.png?branch=master)](https://travis-ci.org/pdenis/MonitorBundle)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pdenis/MonitorBundle/badges/quality-score.png?s=db430d0b51814554d04706e8790a6642ae4322f3)](https://scrutinizer-ci.com/g/pdenis/MonitorBundle/)
+[![Build Status](https://travis-ci.org/pdenis/SnideMonitorBundle.png?branch=master)](https://travis-ci.org/pdenis/SnideMonitorBundle)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pdenis/SnideMonitorBundle/badges/quality-score.png?s=db430d0b51814554d04706e8790a6642ae4322f3)](https://scrutinizer-ci.com/g/pdenis/SnideMonitorBundle/)
 
 ## features
 - Test class based
